@@ -1,0 +1,5 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}AIMLOCK NOVA{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}"></head><body>
+<div class="scan"></div><header><a class="brand" href="{{ url_for('dashboard') if session.get('role') else url_for('login') }}"><b class="logo">NV</b><span>AIMLOCK <em>NOVA</em><small>NEON CONTROL CENTER</small></span></a>
+{% if session.get('role') %}<nav><a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('logs_page') }}">Nhật ký</a><form method="post" action="{{ url_for('logout') }}"><button class="navbtn">Đăng xuất</button></form></nav>{% endif %}</header>
+<main>{% with ms=get_flashed_messages(with_categories=true) %}{% for cat,msg in ms %}<div class="flash {{cat}}">{{msg}}</div>{% endfor %}{% endwith %}{% block content %}{% endblock %}</main><footer>© 2026 AIMLOCK NOVA <span>SECURE ADMIN CONSOLE</span></footer></body></html>

@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block title %}Lỗi {{code}} · AIMLOCK NOVA{% endblock %}{% block content %}<section class="panel"><small class="kicker">SYSTEM RESPONSE</small><h1>{{code}} <span>ERROR</span></h1><p>{{message}}</p><a class="outlinebtn" href="{{url_for('dashboard') if session.get('role') else url_for('login')}}">Quay lại</a></section>{% endblock %}

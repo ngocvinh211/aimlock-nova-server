@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: aimlock-nova-server
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /login
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: AIMLOCK_ADMIN2_USERNAME
+        value: admin2
+      - key: FLASK_SECRET_KEY
+        generateValue: true
